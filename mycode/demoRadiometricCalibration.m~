@@ -49,24 +49,17 @@ set(pHandle, 'DefaultAxesColorOrder',[1 0 0;0 1 0;0 0 1])
 r = invCamResponseEst(:,1);
 g = invCamResponseEst(:,2);
 b = invCamResponseEst(:,3);
-for i = 1:100
+for i = 0:100
     r(i) = r(i) * 255;
     g(i) = g(i) * 255;
     b(i) = b(i) * 255;
 end
-fir_axis = linspace(0,255,100);
-red_fit = fit(r,fir_axis.','pchipinterp');
-green_fit = fit(g,fir_axis.','pchipinterp');
-blue_fit = fit(b,fir_axis.','pchipinterp');
+axis = linspace(0,1,100);
+red_fit = fit();
 
-x = (0:1:255).';
-red_fitted_data = red_fit(x);
-green_fitted_data = green_fit(x);
-blue_fitted_data = blue_fit(x);
-
-plot(linspace(0,1,100), invCamResponseEst, 'LineWidth', 3);
+plot(axis, invCamResponseEst, 'LineWidth', 3);
 legend('R', 'G', 'B', 'Location', 'NorthWest');
-title(sprintf('Estimated inverse response function'));
+title(sprintf('Estimated inverse response function, sequence %s', seqInfo.sequence.name));
 xlabel('Normalized intensity'), ylabel('Normalized irradiance');
 axis([0 1 0 1]); grid on;
 

@@ -24,7 +24,7 @@ if isdeployed || (~isempty(strfind(lower(host), 'cmu')) && ...
 else
     
     % on my laptop
-    basePath = '/Users/jflalonde/Documents/research/code/projects';   
+    basePath = '/Users/MaxCao/Documents/MATLAB';   
 end
 
 projectName = 'radiometricCalibration';
